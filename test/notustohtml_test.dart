@@ -275,6 +275,13 @@ void main() {
 
   group('Decode', () {
     group('Basic text', () {
+      test('Empty text', () {
+        final String html = "<br><br>";
+        final NotusDocument doc = NotusDocument();
+
+        expect(converter.decode(html), doc.toDelta());
+      });
+
       test('Plain paragraph', () {
         final String html = "Hello World!<br><br>";
         final NotusDocument doc = NotusDocument.fromJson([
